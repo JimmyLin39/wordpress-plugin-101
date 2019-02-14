@@ -30,3 +30,41 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
+
+// kill outside script
+if (! defined( 'ABSPATH' )) {
+  die;
+}
+
+// if (! function_exists('add_action')) {
+//   die;
+// }
+
+class JimmyLinPlugin
+{
+  function activate() {
+    echo 'plugin is activated';
+    // generated a CPT
+    // flush rewrite rules
+  }
+
+  function deactivate() {
+    echo 'plugin is deactivated';
+    // flush rewrite rules
+  }
+
+  function uninstall() {
+    // delete CPT
+    // delete all the plugin data from the DB
+  }
+}
+
+if ( class_exists('JimmyLinPlugin') ) {
+  $jimmylinPlugin = new JimmyLinPlugin();
+}
+
+// activation
+register_activation_hook(__FILE__, array( $jimmylinPlugin, 'activate' ));
+
+// deactivation
+register_deactivation_hook(__FILE__, array( $jimmylinPlugin, 'deactivate' ));
